@@ -16,7 +16,12 @@ require 'faker'
      body: Faker::Lorem.paragraph
    )
  end
- 
+
+Post.create!(
+  title: "This is unique",
+  body: "very very unique"
+  )
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
