@@ -20,7 +20,7 @@ require 'faker'
  10.times do
     Advertisement.create!(
       title: Faker::Lorem.sentence,
-      copy: Faker::Lorem.sentence
+      copy: Faker::Lorem.sentence,
       price: Faker::Lorem.price
       )
   end
