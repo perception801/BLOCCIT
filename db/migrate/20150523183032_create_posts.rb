@@ -6,5 +6,6 @@ class CreatePosts < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_foreign_key :topic_id
   end
 end
