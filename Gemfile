@@ -12,7 +12,7 @@ end
 group :development do
   gem 'sqlite3'
 end
-
+gem 'pundit'
 gem 'devise'
 gem 'figaro', '1.0'
 
