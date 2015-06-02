@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :user, only: [:update]
+  resources :users, only: [:update]
 
   resources :topics do
      resources :posts, except: [:index]
