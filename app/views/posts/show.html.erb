@@ -1,19 +1,36 @@
-<h1><%= markdown_to_html @post.title %></h1>
-<% if policy(@post).edit? %>
-    <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
-    <% end %>
+<h1 class="post-inline1"><%= markdown_to_html @post.title %></h1>
+<%= image_tag(@post.image.profile.url, class: 'post-inline2') if @post.image? %>
+
 <div class="row">
   <div class="col-md-8">
-    <small>
-      <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-       submitted <%= time_ago_in_words(@post.created_at) %> ago by
-       <%= @post.user.name %>
-     </small>
+  <small>
+    <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+    Submitted <%= time_ago_in_words(@post.created_at) %> ago by
+    <%= @post.user.name %>
+  </small>
+  <hr />
     <p><%= markdown_to_html @post.body %></p>
   </div>
-</div>
-<div class ="row">
-  <div class="col-md-8">
-    <p><%= image_tag( @post.image.profile.url ) if @post.image? %></p>
+  <div class="col-md-4">
+    <% if policy(@post).edit? %>
+      <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
+    <% end %>
   </div>
+</div>
+
+<div class="col-md-8">
+  <hr />
+</div>
+
+<div class="col-md-8">
+
+  <h4>Comments: <%= @comments.count %></h4>
+
+  
+  <%= render partial: 'comments/comment', collection: @comments %>
+
+  <h5>New Comment</h5>
+
+ 
+  <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
 </div>
