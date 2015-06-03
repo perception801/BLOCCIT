@@ -19,18 +19,10 @@
 </div>
 
 <div class="col-md-8">
-  <hr />
-</div>
-
-<div class="col-md-8">
-
-  <h4>Comments: <%= @comments.count %></h4>
-
-  
-  <%= render partial: 'comments/comment', collection: @comments %>
-
-  <h5>New Comment</h5>
-
- 
-  <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
+    <h4>Comments</h4>
+    <%= render @post.comments %>
+  </div>
+    <% if policy(Comment.new).create? %>   
+    <%= render partial: 'comments/form', locals: { topic: @topic, post: @post } %>
+    <% end %>  
 </div>
