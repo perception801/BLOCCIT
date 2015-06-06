@@ -15,4 +15,15 @@ module ApplicationHelper
   end
 
 
+  def up_vote_link_classes(post)
+    if (current_user.voted(post) && current_user.voted(post).up_vote?)  
+    'Voted'
+  end
+end
+  def down_vote_link_classes(post)
+    if (current_user.voted(post) && current_user.voted(post).down_vote?)
+      'Voted'
+    end
+  end
+
 end
