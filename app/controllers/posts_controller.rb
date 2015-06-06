@@ -2,11 +2,10 @@ class PostsController < ApplicationController
 
 
   def show
-    @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = Comment.new
-    authorize @comment
   end
 
   def new
@@ -20,7 +19,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
     authorize @post
-    if @post.save
+    if save_with_initial_vote
       flash[:notice] = "Post was saved."
       redirect_to topic_post_path(@topic, @post)
     else
