@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-8">
     <%= render partial: 'votes/voter', locals: { post: @post } %>
-    <h1> class="post-inline1"><%= markdown_to_html @post.title %></h1>
+    <h1><%= markdown_to_html @post.title %></h1>
   <small>
     <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
     Submitted <%= time_ago_in_words(@post.created_at) %> ago by
@@ -27,6 +27,8 @@
        <%= pluralize(@post.down_votes, 'down vote') %>
      </small>
    </div>
+    <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+
   </div>
 </div>
 
