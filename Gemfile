@@ -20,6 +20,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
+gem 'newrelic_rpm'
 
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
