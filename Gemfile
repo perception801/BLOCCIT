@@ -12,6 +12,7 @@ end
 group :development do
   gem 'sqlite3'
 end
+
 gem 'pundit'
 gem 'devise'
 gem 'figaro', '1.0'
@@ -21,6 +22,11 @@ gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
 gem 'newrelic_rpm'
+
+group :development, :production do
+  gem "puma"
+end
+
 
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
